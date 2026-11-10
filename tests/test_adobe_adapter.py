@@ -152,7 +152,7 @@ class AdobeAdapterTests(unittest.TestCase):
                              [self.output / "export.png"])
         generated = (self.output / ".control/run.jsx").read_text()
         payload = json.loads(generated.splitlines()[0].removeprefix("var ADOBE_JOB = ")[:-1])
-        self.assertEqual(payload["input"], str(psd))
+        self.assertEqual(payload["input"], str(psd.resolve()))
         self.assertIn("app.documents.length !== 0", generated)
 
     def test_nonzero_aerender_exit_cannot_succeed(self):

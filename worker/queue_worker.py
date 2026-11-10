@@ -332,7 +332,9 @@ def main(argv: list[str] | None = None) -> int:
         with Worker(args.root, config, simulate=args.simulate) as worker:
             while True:
                 for result in worker.drain():
-                    print(json.dumps(result, ensure_ascii=False), flush=True)
+                    # JSON escapes keep console output portable to legacy Windows
+                    # encodings; the status files themselves remain UTF-8.
+                    print(json.dumps(result, ensure_ascii=True), flush=True)
                 if args.once:
                     return 0
                 time.sleep(args.poll_seconds)

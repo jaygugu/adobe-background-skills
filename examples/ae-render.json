@@ -1,0 +1,12 @@
+{
+  "id": "ae-example-001",
+  "action": "ae-render",
+  "input": "inputs/sample.aep",
+  "options": {
+    "comp": "Main",
+    "output_name": "preview.mov",
+    "output_module": "YOUR_VERIFIED_OUTPUT_MODULE_TEMPLATE",
+    "start_frame": 0,
+    "end_frame": 29
+  }
+}

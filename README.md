@@ -1,4 +1,4 @@
-# Adobe Background Skills — BinhTH
+# Adobe Background Skills - BinhTH
 
 Plugin dành cho **Claude Desktop / Cowork**, đi kèm worker chạy trên máy có After Effects và Photoshop. Claude nhận yêu cầu, tạo job trong thư mục được chia sẻ, rồi đọc tiến độ và kết quả.
 

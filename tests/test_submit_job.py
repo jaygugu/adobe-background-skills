@@ -1,4 +1,5 @@
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -68,6 +69,24 @@ class SubmissionTests(unittest.TestCase):
                                 capture_output=True, text=True, check=True)
         self.assertEqual(json.loads(result.stdout)["state"], "queued")
         self.assertFalse((self.root / "status" / "submit-1.json").exists())
+
+    def test_cli_unicode_paths_survive_ascii_console(self):
+        root = initialize(Path(self.temp.name) / "shared Bình")
+        (root / "inputs" / "thiết kế.psd").write_bytes(b"test fixture")
+        job = dict(self.job, input="inputs/thiết kế.psd")
+        manifest = Path(self.temp.name) / "unicode-job.json"
+        manifest.write_text(json.dumps(job, ensure_ascii=False), encoding="utf-8")
+        worker_dir = Path(__file__).resolve().parents[1] / "worker"
+        env = dict(os.environ, PYTHONIOENCODING="ascii")
+        submitted = subprocess.run([sys.executable, str(worker_dir / "submit_job.py"),
+                                    "--root", str(root), "--job", str(manifest)],
+                                   capture_output=True, text=True, check=True, env=env)
+        self.assertEqual(json.loads(submitted.stdout)["state"], "queued")
+        executed = subprocess.run([sys.executable, str(worker_dir / "queue_worker.py"),
+                                   "--root", str(root), "--simulate", "--once"],
+                                  capture_output=True, text=True, check=True, env=env)
+        self.assertEqual(json.loads(executed.stdout)["state"], "simulated")
+        self.assertEqual(json.loads(executed.stdout)["input"], "inputs/thiết kế.psd")
 
 
 if __name__ == "__main__":

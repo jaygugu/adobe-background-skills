@@ -1,0 +1,6 @@
+{
+  "id": "ps-example-001",
+  "action": "ps-export-png",
+  "input": "inputs/sample.psd",
+  "options": {}
+}

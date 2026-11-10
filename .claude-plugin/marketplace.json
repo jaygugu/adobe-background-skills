@@ -1,0 +1,11 @@
+{
+  "name": "binhth-adobe",
+  "owner": {"name": "BinhTH"},
+  "plugins": [
+    {
+      "name": "adobe-background",
+      "source": "./plugins/adobe-background",
+      "description": "Prepare and monitor local After Effects render and Photoshop PNG export jobs."
+    }
+  ]
+}

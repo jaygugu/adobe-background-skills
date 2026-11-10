@@ -1,0 +1,6 @@
+{
+  "name": "adobe-background",
+  "version": "0.1.0",
+  "description": "Prepare and monitor local Adobe file jobs through a shared folder and a separately started worker.",
+  "author": {"name": "BinhTH"}
+}

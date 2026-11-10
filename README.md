@@ -27,7 +27,7 @@ Không giả định terminal của một phiên Cowork là terminal trên máy 
 
 After Effects có renderer dòng lệnh. Photoshop vẫn là ứng dụng desktop được điều khiển bằng scripting; cửa sổ có thể xuất hiện. Đây không phải Photoshop chạy headless trong cloud. Máy cần bật, đăng nhập và không sleep trong khi xử lý.
 
-## 1. Chuẩn bị máy — một lần
+## 1. Setup
 
 - Windows hoặc macOS; Python **3.10+**; Adobe được cài và kích hoạt hợp lệ.
 - Với AE: xác định đúng đường dẫn `aerender`, comp và output module template. Font, effect, plugin và footage phải có trên máy chạy.

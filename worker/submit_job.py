@@ -55,7 +55,7 @@ def main(argv: list[str] | None = None) -> int:
         job = read_json(args.job)
         path = submit(args.root, job)
         print(json.dumps({"id": job["id"], "state": "queued", "manifest": str(path),
-                          "message": "Submitted only; inspect status/<id>.json for the actual execution result."}, ensure_ascii=False))
+                          "message": "Submitted only; inspect status/<id>.json for the actual execution result."}, ensure_ascii=True))
         return 0
     except (OSError, ValidationError) as exc:
         print(str(exc), file=sys.stderr)
